@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<script src="js/jquery-2.1.3.min.js"></script>
+<link rel="stylesheet" href="css/sample.css">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+
+<title>CHALLENGE OR NOT??</title>
+</head>
+
+<header>
+  <div id="wrap">
+  <h1><img src="img/tatenaga 2024-04-25 8.35.31.png" alt=""></h1>
+</header>
+<main>
+  <table class="nani">
+    <tr>
+      <th>What is your goal?</th>
+      <td><input type="text"style="font-size:40px;" id="name" 
+        name="name" required 
+      minlength="1" maxlength="40" 
+      size="60"  /></td>
+    </tr>
+  </table>
+  <ul>
+    <li id="dochi"><img src="img/How about today.png" alt=""></li>
+  </ul>
+  <div id="judgment"><img src="img/have a rest.png" alt=""><h1>OR</h1><img src="img/just do it!.png" alt=""></div>
+  <div id="resultsContainer">
+    <div id="results"></div> <!-- 新しい結果を追加するコンテナ -->
+</div>
+</main>
+<footer>
+  <button id="checkRestImages">記録します</button>
+  <br>
+  <a onclick="window.location.reload(true);" title="再び">
+    <i class="fa fa-refresh" aria-hidden="true"></i><span>try again?</span>
+</a>
+</footer>
+</div>
+
+<html><img src="img/" alt=""></html>
+
+<script>
+  $(document).ready(function() {
+      let gameN = 0;
+      let currentRow = null;
+      var judgmentImages = ["img/have a rest.png", "img/just do it!.png", "img/I did it anyway.png"];
+      var index = 0;
+
+      $("#dochi").on("click", function() {
+          const a = Math.ceil(Math.random() * 7);
+          let imgSrc = (a === 1) ? "img/have a rest.png" : "img/just do it!.png";
+          if (gameN < 1) {
+              currentRow = $('<div>').addClass('result-row');
+              $("#resultsContainer").append(currentRow);
+          }
+          const newImg = $('<img>').attr('src', imgSrc).on("click", function() {
+              index = (index + 1) % judgmentImages.length;
+              $(this).attr('src', judgmentImages[index]);
+          });
+          currentRow.append(newImg);
+
+          gameN++;
+          if (gameN === 7) {
+              this.style.pointerEvents = "none";
+          }
+      });
+  });
+  </script>  
+</body>
+</html>
